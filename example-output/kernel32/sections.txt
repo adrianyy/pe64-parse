@@ -1,0 +1,6 @@
+.text    [60000020] (raw      400 ->    74C00) (virt     1000 ->    75750) 
+.rdata   [40000040] (raw    74C00 ->    A6400) (virt    76000 ->    A76F4) 
+.data    [C0000040] (raw    A6400 ->    A6A00) (virt    A8000 ->    A915C) 
+.pdata   [40000040] (raw    A6A00 ->    AC000) (virt    AA000 ->    AF430) 
+.rsrc    [40000040] (raw    AC000 ->    AC600) (virt    B0000 ->    B0520) 
+.reloc   [42000040] (raw    AC600 ->    ACA00) (virt    B1000 ->    B124C) 

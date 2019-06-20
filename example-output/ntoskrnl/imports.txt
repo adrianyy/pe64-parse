@@ -1,0 +1,283 @@
+ext-ms-win-ntos-werkernel-l1-1-0.dll {
+    WerLiveKernelInitSystem,
+}
+
+ext-ms-win-ntos-processparameters-l1-1-0.dll {
+    PsDestroyProcessParameterOverrides,
+    PsGetProcessParameterOverrides,
+}
+
+ext-ms-win-ntos-tm-l1-1-0.dll {
+    NtQueryInformationTransaction,
+    NtQueryInformationResourceManager,
+    NtQueryInformationEnlistment,
+    NtPropagationFailed,
+    NtPropagationComplete,
+    NtPrepareEnlistment,
+    NtPrepareComplete,
+    NtPrePrepareEnlistment,
+    NtPrePrepareComplete,
+    NtOpenTransactionManager,
+    NtOpenTransaction,
+    NtOpenResourceManager,
+    TmPrepareEnlistment,
+    NtGetNotificationResourceManager,
+    NtFreezeTransactions,
+    NtEnumerateTransactionObject,
+    NtCreateTransactionManager,
+    NtCreateTransaction,
+    NtCreateResourceManager,
+    NtQueryInformationTransactionManager,
+    NtCommitTransaction,
+    NtCommitEnlistment,
+    NtCommitComplete,
+    TmInitSystem,
+    TmInitSystemPhase2,
+    NtReadOnlyEnlistment,
+    NtRecoverEnlistment,
+    NtRecoverResourceManager,
+    TmPropagationComplete,
+    NtRecoverTransactionManager,
+    NtRollbackComplete,
+    NtRollbackEnlistment,
+    TmPropagationFailed,
+    TmReadOnlyEnlistment,
+    NtRollbackTransaction,
+    NtSetInformationEnlistment,
+    NtSetInformationResourceManager,
+    NtSetInformationTransaction,
+    NtThawTransactions,
+    TmCancelPropagationRequest,
+    TmCommitComplete,
+    TmCommitEnlistment,
+    TmCommitTransaction,
+    TmCreateEnlistment,
+    TmCurrentTransaction,
+    TmDereferenceEnlistmentKey,
+    TmEnableCallbacks,
+    TmEndPropagationRequest,
+    TmFreezeTransactions,
+    TmRecoverEnlistment,
+    TmRecoverResourceManager,
+    TmGetTransactionId,
+    TmInitializeTransactionManager,
+    TmRecoverTransactionManager,
+    TmReferenceEnlistmentKey,
+    TmRenameTransactionManager,
+    TmRequestOutcomeEnlistment,
+    TmRollbackComplete,
+    TmRollbackEnlistment,
+    TmIsKTMCommitCoordinator,
+    TmIsTransactionActive,
+    TmRollbackTransaction,
+    TmSetCurrentTransaction,
+    TmSinglePhaseReject,
+    TmThawTransactions,
+    TmPrePrepareComplete,
+    TmPrePrepareEnlistment,
+    NtCreateEnlistment,
+    TmPrepareComplete,
+    NtRegisterProtocolAddressInformation,
+    NtRenameTransactionManager,
+    NtSetInformationTransactionManager,
+    NtSinglePhaseReject,
+    NtRollforwardTransactionManager,
+    TmShutdownSystem,
+    NtOpenEnlistment,
+}
+
+HAL.dll {
+    HalRequestIpiSpecifyVector,
+    HalReportResourceUsage,
+    HalAllProcessorsStarted,
+    HalQueryRealTimeClock,
+    KeQueryPerformanceCounter,
+    HalInitializeBios,
+    HalInitSystem,
+    HalAcpiGetTableEx,
+    HalRegisterErrataCallbacks,
+    KdHvComPortInUse,
+    HalQueryMaximumProcessorCount,
+    HalEnumerateProcessors,
+    KeStallExecutionProcessor,
+    HalPerformEndOfInterrupt,
+    HalSetEnvironmentVariableEx,
+    HalGetEnvironmentVariableEx,
+    HalQueryEnvironmentVariableInfoEx,
+    HalTranslateBusAddress,
+    HalGetVectorInput,
+    HalGetMessageRoutingInfo,
+    HalGetProcessorIdByNtNumber,
+    HalReturnToFirmware,
+    HalRequestDeferredRecoveryServiceInterrupt,
+    HalSetEnvironmentVariable,
+    HalGetEnvironmentVariable,
+    HalInitializeOnResume,
+    HalAllocateCrashDumpRegisters,
+    HalGetMemoryCachingRequirements,
+    HalProcessorIdle,
+    HalGetInterruptTargetInformation,
+    KeFlushWriteBuffer,
+    HalGetBusDataByOffset,
+    HalSendNMI,
+    HalSendSoftwareInterrupt,
+    HalInitializeProcessor,
+    HalStopProfileInterrupt,
+    HalStartProfileInterrupt,
+    HalRequestIpi,
+    HalEnableInterrupt,
+    HalRequestSoftwareInterrupt,
+    HalDisableInterrupt,
+    HalCalibratePerformanceCounter,
+    HalHandleMcheck,
+    HalHandleNMI,
+    HalIsHyperThreadingEnabled,
+    HalStartDynamicProcessor,
+    HalRegisterDynamicProcessor,
+    HalStartNextProcessor,
+    HalRequestClockInterrupt,
+    HalSetBusDataByOffset,
+    HalSetRealTimeClock,
+}
+
+PSHED.dll {
+    PshedFreeMemory,
+    PshedReadErrorRecord,
+    PshedClearErrorRecord,
+    PshedAllocateMemory,
+    PshedGetBootErrorPacket,
+    PshedIsSystemWheaEnabled,
+    PshedInitialize,
+    PshedGetAllErrorSources,
+    PshedAttemptErrorRecovery,
+    PshedWriteErrorRecord,
+    PshedBugCheckSystem,
+    PshedFinalizeErrorRecord,
+    PshedArePluginsPresent,
+    PshedEnableErrorSource,
+    PshedDisableErrorSource,
+    PshedGetInjectionCapabilities,
+    PshedInjectError,
+    PshedSetErrorSourceInfo,
+}
+
+BOOTVID.dll {
+    VidInitialize,
+    VidBufferToScreenBlt,
+    VidScreenToBufferBlt,
+    VidBitBlt,
+    VidResetDisplay,
+    VidCleanUp,
+    VidSetTextColor,
+    VidSetScrollRegion,
+    VidSolidColorFill,
+    VidDisplayString,
+    VidBitBltEx,
+}
+
+ext-ms-win-ntos-clipsp-l1-1-0.dll {
+    ClipSpInitialize,
+}
+
+kdcom.dll {
+    KdSetHiberRange,
+    KdPower,
+    KdReceivePacket,
+    KdSendPacket,
+    KdInitialize,
+}
+
+ext-ms-win-ntos-kcminitcfg-l1-1-0.dll {
+    CmSetInitMachineConfig,
+    CmCompleteInitMachineConfig,
+}
+
+ext-ms-win-ntos-ksr-l1-1-2.dll {
+    KsrQueryMetadata,
+    KsrEnumeratePersistedMemory,
+    KsrFreePersistedMemoryBlock,
+    KsrCleanupPageDatabase,
+    KsrInitPageDatabase,
+    KsrPersistMemoryWithMetadata,
+    KsrMdlToMemoryRuns,
+    KsrGetFirmwareInformation,
+    KsrInitSystem,
+    KsrFreePersistedMemory,
+    KsrClaimPersistedMemory,
+}
+
+ext-ms-win-ntos-trace-l1-1-0.dll {
+    TraceInitSystem,
+}
+
+ext-ms-win-ntos-ksecurity-l1-1-1.dll {
+    QueryUpdateFileEaAllowedExt,
+}
+
+ext-ms-win-ntos-werkernel-l1-1-1.dll {
+    WerLiveKernelOpenDumpFile,
+    WerLiveKernelCancelReport,
+    WerLiveKernelCreateReport,
+    WerLiveKernelSubmitReport,
+    WerLiveKernelCloseHandle,
+}
+
+ext-ms-win-ntos-ksigningpolicy-l1-1-0.dll {
+    SeQuerySigningPolicyExt,
+}
+
+ext-ms-win-ntos-ucode-l1-1-0.dll {
+    ExpMicrocodeInformationLoad,
+    ExpMicrocodeInformationUnload,
+    ExpMicrocodeInitialization,
+}
+
+ext-ms-win-ntos-stateseparation-l1-1-0.dll {
+    ExpInitializeStateSeparationPhase0,
+    ExpInitializeStateSeparationPhase2,
+    ExpInitializeStateSeparationPhase1,
+}
+
+ext-ms-win-fs-clfs-l1-1-0.dll {
+    ClfsReserveAndAppendLog,
+    ClfsGetLogFileInformation,
+    ClfsMgmtDeregisterManagedClient,
+    ClfsCloseLogFileObject,
+    ClfsMgmtInstallPolicy,
+    ClfsMgmtRegisterManagedClient,
+    ClfsCreateLogFile,
+    ClfsLsnEqual,
+    ClfsReadLogRecord,
+    ClfsReadNextLogRecord,
+    ClfsTerminateReadLog,
+    ClfsLsnInvalid,
+    ClfsFlushToLsn,
+    ClfsLsnContainer,
+    ClfsLsnLess,
+    ClfsCreateMarshallingArea,
+    ClfsAddLogContainer,
+    ClfsWriteRestartArea,
+    ClfsDeleteLogByPointer,
+    ClfsLsnDifference,
+    ClfsDeleteMarshallingArea,
+    ClfsReadRestartArea,
+}
+
+CI.dll {
+    CiInitialize,
+}
+
+msrpc.sys {
+    MesHandleFree,
+    MesEncodeIncrementalHandleCreate,
+    MesIncrementalHandleReset,
+    NdrMesTypeDecode3,
+    NdrMesTypeEncode3,
+    MesDecodeBufferHandleCreate,
+    RpcExceptionFilter,
+}
+
+cng.sys {
+    BCryptExportKey,
+}
+

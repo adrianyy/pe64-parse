@@ -1,0 +1,11 @@
+[package]
+name = "byteparse-derive"
+version = "0.1.0"
+authors = ["Adrian"]
+edition = "2018"
+
+[lib]
+proc_macro = true
+
+[dependencies]
+syn = "0.15"
