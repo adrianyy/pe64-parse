@@ -56,14 +56,14 @@ impl<T, U> ByteparseHelper<T, U> for U
 macro_rules! impl_bp_a1 {
     ($( $e:expr ),*) => {
         $( unsafe impl<T: Byteparse> Byteparse for [T; $e] {
-			fn parse_to<R: Read>(&mut self, r: &mut R) -> io::Result<()> {
-				for i in 0..$e {
-					self[i].parse_to(r)?;
-				}
-				
-				Ok(())
-			}
-		} )*
+            fn parse_to<R: Read>(&mut self, r: &mut R) -> io::Result<()> {
+                for i in 0..$e {
+                    self[i].parse_to(r)?;
+                }
+                
+                Ok(())
+            }
+        } )*
     }
 }
 
