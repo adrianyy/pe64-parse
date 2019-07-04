@@ -6,3 +6,4 @@ edition = "2018"
 
 [dependencies]
 byteparse = { path = "byteparse" }
+fnv = "1.0.3"

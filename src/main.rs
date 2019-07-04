@@ -149,7 +149,26 @@ impl<T: PeSource> PortableExecutableParser<T> {
         let names = export.address_of_names     as u64;
         let funcs = export.address_of_functions as u64;
 
-        let name_ords: Vec<(u64, u16)> = {
+        use std::hash::{Hash, Hasher};
+        use fnv::FnvHashSet;
+
+        struct OrdEntry(u64, u16);
+
+        impl Hash for OrdEntry {
+            fn hash<H: Hasher>(&self, state: &mut H) {
+                self.1.hash(state);
+            }
+        }
+
+        impl PartialEq for OrdEntry {
+            fn eq(&self, o: &OrdEntry) -> bool {
+                self.1 == o.1
+            }
+        }
+
+        impl Eq for OrdEntry {}
+
+        let name_ords: FnvHashSet<OrdEntry> = {
             let ords       = export.address_of_name_ordinals as u64;
             let mut source = self.source.borrow_mut();
 
@@ -159,15 +178,16 @@ impl<T: PeSource> PortableExecutableParser<T> {
             source.read_exact(&mut buf)?;
 
             buf.chunks(2).enumerate()
-                .map(|(i, v)| (i as u64, u16::from_le_bytes([v[0], v[1]])))
+                .map(|(i, v)| {
+                    OrdEntry(i as u64, u16::from_le_bytes([v[0], v[1]]))
+                })
                 .collect()
         };
         
         for i in 0..(export.number_of_functions as u64) {
-            let name_data = name_ords.iter()
-                .find(|(_, v)| *v == i as u16);
-            
-            let name = if let Some((ni, _)) = name_data {
+            let name_data = name_ords.get(&OrdEntry(0, i as u16));
+
+            let name = if let Some(OrdEntry(ni, _)) = name_data {
                 let name_rva: u32 = self.at_rva(names + ni * 4)?;
                 Some(self.read_str(name_rva as u64)?)
             } else {
@@ -180,7 +200,7 @@ impl<T: PeSource> PortableExecutableParser<T> {
 
             let addr = if forwarded {
                 let forwarder = self.read_str(func)?;
-                let mut iter  = forwarder.splitn(2, ".");
+                let mut iter  = forwarder.splitn(2, '.');
 
                 if let (Some(m), Some(f)) = (iter.next(), iter.next()) {
                     ExportAddr::Forwarded((m.to_owned() + ".dll",
@@ -292,8 +312,8 @@ impl<T: PeSource> PortableExecutableParser<T> {
     }
 }
 
-fn dump_imports<W>(pe: &PortableExecutable, w: &mut W) -> io::Result<()>
-    where W: Write
+fn dump_imports(pe: &PortableExecutable, w: &mut impl Write) 
+    -> io::Result<()>
 {
     for module in pe.imports() {
         writeln!(w, "{} {{", module.name)?;
@@ -312,8 +332,8 @@ fn dump_imports<W>(pe: &PortableExecutable, w: &mut W) -> io::Result<()>
     Ok(())
 }
 
-fn dump_exports<W>(pe: &PortableExecutable, w: &mut W) -> io::Result<()>
-    where W: Write
+fn dump_exports(pe: &PortableExecutable, w: &mut impl Write) 
+    -> io::Result<()>
 {
     for export in pe.exports() {
         let name = export.name.as_ref()
@@ -334,8 +354,8 @@ fn dump_exports<W>(pe: &PortableExecutable, w: &mut W) -> io::Result<()>
     Ok(())
 }
 
-fn dump_sections<W>(pe: &PortableExecutable, w: &mut W) -> io::Result<()>
-    where W: Write
+fn dump_sections(pe: &PortableExecutable, w: &mut impl Write) 
+    -> io::Result<()>
 {
     for section in pe.sections() {
         write!(w, "{: <8} [{:8X}] ", section.name, section.flags)?;
@@ -353,12 +373,14 @@ fn main() -> io::Result<()> {
     use std::fs::File;
     use std::sync::Arc;
 
-    let name = if let Some(n) = std::env::args().skip(1).next() {
-        n
-    } else {
-        println!("No filename was provided.");
-        return Ok(());
-    };
+    // let name = if let Some(n) = std::env::args().nth(1) {
+    //     n
+    // } else {
+    //     println!("No filename was provided.");
+    //     return Ok(());
+    // };
+
+    let name = "ntoskrnl.exe";
 
     let mut buf = Vec::new();
     File::open(name)?.read_to_end(&mut buf)?;
