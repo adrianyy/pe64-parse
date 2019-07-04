@@ -373,14 +373,12 @@ fn main() -> io::Result<()> {
     use std::fs::File;
     use std::sync::Arc;
 
-    // let name = if let Some(n) = std::env::args().nth(1) {
-    //     n
-    // } else {
-    //     println!("No filename was provided.");
-    //     return Ok(());
-    // };
-
-    let name = "ntoskrnl.exe";
+    let name = if let Some(n) = std::env::args().nth(1) {
+        n
+    } else {
+        println!("No filename was provided.");
+        return Ok(());
+    };
 
     let mut buf = Vec::new();
     File::open(name)?.read_to_end(&mut buf)?;
